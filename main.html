@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Tableau de Bord Utilisateur</title>
+    <style>
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+                background-color: #f8f9fa;
+            }
+        }
+        .navbar {
+            position: sticky; /* Rendre la navbar sticky */
+            top: 0; /* Positionner en haut */
+            width: 100%; /* S'assurer qu'elle prend toute la largeur */
+            z-index: 1000; /* Assure qu'elle est au-dessus du contenu */
+            transition: background-color 0.3s; /* Transition de couleur */
+        }
+        .navbar.scrolled {
+            background-color: #343a40; /* Change de couleur lors du défilement */
+        }
+         .sidebar {
+            height: 100vh;
+            width: 250px;
+            background: #343a40;
+            padding-top: 20px;
+            position: fixed;
+            left: -250px; /* Masqué par défaut */
+            transition: left 0.3s; /* Animation de transition */
+        }
+        .sidebar.show {
+            left: 0; /* Affiche la sidebar */
+        }
+        .sidebar-content {
+            padding: 10px;
+        }
+        .sidebar a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar a:hover {
+            background: #495057;
+        }
+        .content {
+            margin-left: 0; /* Pas de marge initiale */
+            padding: 20px;
+            background: #f8f9fa;
+            height: 100vh;
+            transition: margin-left 0.3s; /* Animation de transition */
+            color: #062bfc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .content.shift {
+            margin-left: 250px; /* Ajuste le contenu quand la sidebar est affichée */
+        }
+        
+        .toggle-btn {
+            cursor: pointer;
+            color: rgb(7, 7, 7);
+            background: #34a84de0;
+            border: none;
+            padding: 15px;
+            transition: background 0.3s;
+            position:absolute;
+            z-index: 1000; /* Pour s'assurer qu'il est au-dessus de la sidebar */
+            margin-left: -30px;
+        }
+        .toggle-btn:hover {
+            background: #54f57c;
+        }
+        .collapse {
+           margin-left: 780px;
+           font-size: 19px; 
+        }
+        
+         /* CARROUSEL */
+        .hero-img {
+            height: 70vh;
+            object-fit: cover;
+            width: 100%;
+            filter: brightness(75%);
+        }
+
+        @media(max-width: 767px) {
+            .hero-img {
+                height: 40vh; /* plus petit sur téléphone */
+            }
+
+            .carousel-caption h1 {
+                font-size: 1.5rem;
+            }
+
+            .carousel-caption p {
+                font-size: 0.9rem;
+            }
+
+            .carousel-caption .btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-success navbar-light">
+        <div class="container-fluid">
+                <!-- Toggler Button -->
+            <button class="toggle-btn" id="toggle-btn">
+                    &#9776; <!-- Icône Hamburger -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="add_tasks.php">Créer une tâche</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tasks.html">Lister les tâches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Déconnexion</a>
+                     </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <h2 class="text-center text-white">Dashboard</h2>
+            <a href="../index.html"><i class="fas fa-home mx-3"></i> Accueil</a>
+            <a href="#"><i class="fas fa-user mx-3"></i> Profil</a>
+            <a href="#"><i class="fas fa-cog mx-3"></i> Paramètres</a>
+            <a href="#"><i class="fas fa-envelope mx-3"></i> Messages</a>
+            <a href="logout.php" class="logout"><i class="fas fa-sign-out-alt mx-3"></i> Se déconnecter</a>
+        </div>
+    </div>
+
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="images/image2.jpg" class="d-block w-100 hero-img" alt="Image">
+                <div class="carousel-caption">
+                    <h1>Prenez Votre Rendez-vous</h1>
+                    <p>Simple, rapide et sécurisé.</p>
+                    <a href="#" class="btn btn-primary btn-lg">PRENDRE RDV</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="images/image4.jpg" class="hero-img">
+                <div class="carousel-caption">
+                    <h1>Médecine de proximité</h1>
+                    <p>Des soins pour tous, partout.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="images/image3.jpg" class="hero-img">
+                <div class="carousel-caption">
+                    <h1>Plateforme numérique</h1>
+                    <p>Accédez à vos informations médicales.</p>
+                </div>
+            </div>
+        </div>
+ </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#toggle-btn').click(function() {
+            $('#sidebar').toggleClass('show');
+            $('#content').toggleClass('shift');
+        });
+    });
+</script>
+
+<script>
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 50) {
+            $('.navbar').addClass('scrolled');
+        } else {
+            $('.navbar').removeClass('scrolled');
+        }
+    });
+</script>
+
+</body>
+</html>

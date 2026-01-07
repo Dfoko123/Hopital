@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Gestion des Rendez-vous Hospitaliers</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS personnalisé -->
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+        /* CARROUSEL */
+        .hero-img {
+            height: 70vh;
+            object-fit: cover;
+            width: 100%;
+            filter: brightness(75%);
+        }
+
+        @media(max-width: 767px) {
+            .hero-img {
+                height: 40vh; /* plus petit sur téléphone */
+            }
+
+            .carousel-caption h1 {
+                font-size: 1.5rem;
+            }
+
+            .carousel-caption p {
+                font-size: 0.9rem;
+            }
+
+            .carousel-caption .btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* BOUTON PRINCIPAL */
+        .btn-primary {
+            background-color: #ff0080;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #d9006e;
+        }
+        .navbar {
+            position: sticky; /* Rendre la navbar sticky */
+            top: 0; /* Positionner en haut */
+            width: 100%; /* S'assurer qu'elle prend toute la largeur */
+            z-index: 1000; /* Assure qu'elle est au-dessus du contenu */
+            transition: background-color 0.3s; /* Transition de couleur */
+        }
+        .navbar.scrolled {
+            background-color: #343a40; /* Change de couleur lors du défilement */
+        }
+        a{
+        color:white;
+        }
+    </style>
+</head>
+
+<body>
+
+     <nav class="navbar navbar-expand-lg bg-primary navbar-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html" style="color:white;">Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html" style="color:white;">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color:white;">Déconnexion</a>
+                     </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <!-- <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <h2 class="text-center text-white">Dashboard</h2>
+            <a href="index.html"><i class="fas fa-home mx-3"></i> Accueil</a>
+            <a href="#"><i class="fas fa-user mx-3"></i> Profil</a>
+            <a href="#"><i class="fas fa-cog mx-3"></i> Paramètres</a>
+            <a href="#"><i class="fas fa-envelope mx-3"></i> Messages</a>
+            <a href="" class="#"><i class="fas fa-sign-out-alt mx-3"></i> Se déconnecter</a>
+        </div>
+    </div> -->
+
+    <!-- ===================== CARROUSEL ===================== -->
+   
+        <div id="heroCarousel" class="carousel slide" data-bs-slide-to="carousel"></div>
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="images/image2.jpg" class="d-block w-100 hero-img" alt="Image">
+                <div class="carousel-caption">
+                    <h1>Prenez Votre Rendez-vous</h1>
+                    <p>Simple, rapide et sécurisé.</p>
+                    <a href="#" class="btn btn-primary btn-lg">PRENDRE RDV</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="images/image4.jpg" class="hero-img">
+                <div class="carousel-caption">
+                    <h1>Médecine de proximité</h1>
+                    <p>Des soins pour tous, partout.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="images/image3.jpg" class="hero-img">
+                <div class="carousel-caption">
+                    <h1>Plateforme numérique</h1>
+                    <p>Accédez à vos informations médicales.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+   
+
+    <!-- ===================== SECTION PRINCIPALE ===================== -->
+    <section class="container py-5">
+        <div class="row align-items-center">
+
+            <!-- TEXT -->
+            <div class="col-md-6 col-sm-12 mb-4">
+                <h2 class="fw-bold text-success">Santé Cameroun</h2>
+                <h4 class="text-muted">La médecine de proximité pour tous</h4>
+                <p>
+                    Cette plateforme simplifie la prise de rendez-vous, permet le suivi médical digital
+                    et rapproche les services de santé de la population.
+                </p>
+                <a href="#" class="btn btn-outline-success btn-lg">S'inscrire</a>
+            </div>
+
+            <!-- IMAGE -->
+            <div class="col-md-6 col-sm-12 text-center">
+                <img src="images/image1.jpg" class="img-fluid rounded shadow" alt="Docteur">
+            </div>
+
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
